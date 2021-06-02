@@ -7,9 +7,14 @@ import java.util.Scanner;
 
 public class InputView {
 
+  static Scanner scanner = new Scanner(System.in);
+
+  public static int checkNumber() {
+    return scanner.nextInt();
+  }
+
   public static User input() {
     User user = new User();
-    Scanner scanner = new Scanner(System.in);
     int num = scanner.nextInt();
     wrongRange(num);
     user.input(checkNum(num));
@@ -23,7 +28,6 @@ public class InputView {
     int c = temp.charAt(2);
 
     if (a == b || a == c || b == c) {
-      Scanner scanner = new Scanner(System.in);
       int reInput = scanner.nextInt();
       wrongRange(reInput);
       return checkNum(reInput);
