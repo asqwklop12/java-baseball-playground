@@ -23,4 +23,13 @@ public class BallValidationTest {
     assertThat(BallValidation.size(Collections.emptyList())).isFalse();
     assertThat(BallValidation.size(Arrays.asList(1, 2, 3, 4))).isFalse();
   }
+
+  @Test
+  void 중복된_숫자인가() {
+    assertThat(BallValidation.duplicate(Arrays.asList(1, 1, 2))).isTrue();
+    assertThat(BallValidation.duplicate(Arrays.asList(1, 2, 1))).isTrue();
+    assertThat(BallValidation.duplicate(Arrays.asList(2, 1, 1))).isTrue();
+    assertThat(BallValidation.duplicate(Arrays.asList(1, 1, 1))).isTrue();
+    assertThat(BallValidation.duplicate(Arrays.asList(1, 2, 3))).isFalse();
+  }
 }
