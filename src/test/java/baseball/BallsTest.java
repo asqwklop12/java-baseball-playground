@@ -36,4 +36,21 @@ public class BallsTest {
     assertThat(game.compare(Arrays.asList(1, 2, 3), new Ball(1, 1))).isEqualTo(10);
   }
 
+  @Test
+  @DisplayName("볼일 경우 숫자 3개 비교")
+  void ballCompare3Test() {
+    assertThat(game.compare(Arrays.asList(1, 2, 3), Arrays.asList(4, 1, 5))).isEqualTo(1);
+    assertThat(game.compare(Arrays.asList(1, 2, 3), Arrays.asList(2, 1, 5))).isEqualTo(2);
+    assertThat(game.compare(Arrays.asList(1, 2, 3), Arrays.asList(2, 3, 1))).isEqualTo(3);
+  }
+
+  @Test
+  @DisplayName("스트라이크일 경우 숫자 3개 비교")
+  void strikeCompare3Test() {
+    assertThat(game.compare(Arrays.asList(1, 2, 3), Arrays.asList(1, 4, 5))).isEqualTo(10);
+    assertThat(game.compare(Arrays.asList(1, 2, 3), Arrays.asList(1, 2, 5))).isEqualTo(20);
+    assertThat(game.compare(Arrays.asList(1, 2, 3), Arrays.asList(1, 2, 3))).isEqualTo(30);
+  }
+
+
 }
