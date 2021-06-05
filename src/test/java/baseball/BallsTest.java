@@ -11,27 +11,6 @@ public class BallsTest {
 
 
   @Test
-  @DisplayName("낫싱일 경우")
-  void nottingTest() {
-    Game game = new Game(Arrays.asList(1, 2, 3), Collections.singletonList(5));
-    assertThat(game.compare()).isEqualTo(0);
-  }
-
-  @Test
-  @DisplayName("볼일 경우")
-  void ballTest() {
-    Game game = new Game(Arrays.asList(1, 2, 3), Collections.singletonList(3));
-    assertThat(game.compare()).isEqualTo(1);
-  }
-
-  @Test
-  @DisplayName("스트라이크일 경우")
-  void strikeTest() {
-    Game game = new Game(Arrays.asList(1, 2, 3), Collections.singletonList(1));
-    assertThat(game.compare()).isEqualTo(10);
-  }
-
-  @Test
   @DisplayName("볼일 경우 숫자 3개 비교")
   void ballCompare3Test() {
     Game game = new Game(Arrays.asList(1, 2, 3), Arrays.asList(4, 1, 5));
@@ -53,5 +32,22 @@ public class BallsTest {
     assertThat(game.compare()).isEqualTo(30);
   }
 
+  @Test
+  @DisplayName("낫싱 테스트")
+  void nottingTest() {
+    Game game = new Game(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6));
+    assertThat(game.compare()).isEqualTo(0);
+  }
+  @Test
+  @DisplayName("복합 테스트")
+  void compareTest() {
+    Game game = new Game(Arrays.asList(1, 2, 3), Arrays.asList(1, 4, 5));
+    assertThat(game.compare()).isEqualTo(10);
+    game.input(Arrays.asList(1, 5, 2));
+    assertThat(game.compare()).isEqualTo(11);
+    game.input(Arrays.asList(4, 2, 3));
+    assertThat(game.compare()).isEqualTo(20);
+
+  }
 
 }
