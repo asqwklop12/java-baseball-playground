@@ -30,13 +30,12 @@ public class Hitter implements AutoCloseable {
     return num;
   }
 
-  private List<Integer> duplicateValidation(List<Integer> nums, int num) {
+  private void duplicateValidation(List<Integer> nums, int num) {
     if (BallValidation.duplicate(nums)) {
       nums.remove(num);
       nums.add(rangeValidation(crateNumber()));
-      return duplicateValidation(nums, num);
+      duplicateValidation(nums, num);
     }
-    return nums;
   }
 
 
