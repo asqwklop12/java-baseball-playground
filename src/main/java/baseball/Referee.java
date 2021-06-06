@@ -3,16 +3,16 @@ package baseball;
 import baseball.model.Ball;
 import java.util.List;
 
-public class Game {
+public class Referee {
 
   private static final int BASEBALL_MAX_COUNT = 3;
   private List<Integer> computerNums;
   private List<Integer> playerNums;
 
-  public Game() {
+  public Referee() {
   }
 
-  public Game(List<Integer> computerNums, List<Integer> playerNums) {
+  public Referee(List<Integer> computerNums, List<Integer> playerNums) {
     this.computerNums = computerNums;
     this.playerNums = playerNums;
   }
