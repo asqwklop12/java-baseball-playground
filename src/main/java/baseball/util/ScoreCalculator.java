@@ -5,6 +5,9 @@ public class ScoreCalculator {
 
   public static String action(int score) {
     String[] result = split(convert(score));
+    if (score == 0) {
+      return "낫싱";
+    }
     if (result.length == 1) {
       return result[0] + "볼";
     }

@@ -3,9 +3,13 @@ package baseball.ui;
 import baseball.Referee;
 import baseball.model.Hitter;
 import baseball.model.Pitcher;
+import baseball.util.ScoreCalculator;
 import java.util.List;
+import java.util.Scanner;
 
 public class InputView {
+
+  private static final String INPUT_NUMBER = "숫자를 입력해 주세요 : ";
 
   private static List<Integer> pitch() {
     return new Pitcher().pitch();
@@ -15,11 +19,25 @@ public class InputView {
     return new Hitter().hit();
   }
 
-  public void play() {
-    List<Integer> pitcher = pitch();
-    System.out.print("숫자를 입력해 주세요 : ");
-    List<Integer> hitter = hit();
-    Referee referee = new Referee(pitcher, hitter);
-    int score = referee.compare();
+  public static boolean play() {
+    while (true) {
+      Referee referee = new Referee(pitch(), hit());
+      System.out.print(INPUT_NUMBER);
+      String action = ScoreCalculator.action(referee.compare());
+      System.out.println(action);
+      if (action.equals("3스트라이크")) {
+        System.out.println("3개의 숫자를 모두 맞추셨습니다. 게임 종료");
+        return finish();
+      }
+      System.out.print(INPUT_NUMBER);
+      referee.input(hit());
+      System.out.println(ScoreCalculator.action(referee.compare()));
+    }
+  }
+
+  private static boolean finish() {
+    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    Scanner scanner = new Scanner(System.in);
+    return scanner.nextInt() == 2;
   }
 }
