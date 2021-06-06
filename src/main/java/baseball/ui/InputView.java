@@ -20,19 +20,19 @@ public class InputView {
   }
 
   public static boolean play() {
-    while (true) {
-      Referee referee = new Referee(pitch(), hit());
-      System.out.print(INPUT_NUMBER);
-      String action = ScoreCalculator.action(referee.compare());
-      System.out.println(action);
-      if (action.equals("3스트라이크")) {
-        System.out.println("3개의 숫자를 모두 맞추셨습니다. 게임 종료");
-        return finish();
-      }
+    System.out.print(INPUT_NUMBER);
+    List<Integer> pitch = pitch();
+    System.out.println(pitch);
+    Referee referee = new Referee(pitch, hit());
+    String action = ScoreCalculator.action(referee.compare());
+    System.out.println(action);
+    while (!action.equals("3스트라이크")) {
       System.out.print(INPUT_NUMBER);
       referee.input(hit());
       System.out.println(ScoreCalculator.action(referee.compare()));
     }
+    System.out.println("3개의 숫자를 모두 맞추셨습니다. 게임 종료");
+    return finish();
   }
 
   private static boolean finish() {

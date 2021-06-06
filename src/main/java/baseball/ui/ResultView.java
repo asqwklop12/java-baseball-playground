@@ -3,10 +3,8 @@ package baseball.ui;
 public class ResultView {
 
   public static void main(String[] args) {
-    while (true) {
-      if (InputView.play()) {
-        return;
-      }
+    while (!InputView.play()) {
+
     }
   }
 }
