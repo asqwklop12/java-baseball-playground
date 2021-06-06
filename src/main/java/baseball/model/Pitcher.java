@@ -7,11 +7,11 @@ import java.util.Random;
 
 public class Pitcher {
 
-  public List<Integer> readyNumbers() {
-    return duplicateValidation(pitch(new ArrayList<>()));
+  public List<Integer> pitch() {
+    return duplicateValidation(readyNumbers(new ArrayList<>()));
   }
 
-  private List<Integer> pitch(List<Integer> nums) {
+  private List<Integer> readyNumbers(List<Integer> nums) {
     while (!BallValidation.size(nums)) {
       rangeValidation(nums, generateRandomNumber());
     }
@@ -20,7 +20,7 @@ public class Pitcher {
 
   private List<Integer> duplicateValidation(List<Integer> nums) {
     nums.clear();
-    pitch(nums);
+    readyNumbers(nums);
     if (!BallValidation.duplicate(nums)) {
       return nums;
     }
